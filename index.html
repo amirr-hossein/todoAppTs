@@ -4,9 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/output.css">
+    <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
     <title>todoAppTs</title>
 </head>
 <body>
+    <div>
+        <header>Todo App</header>
+        <div class="inputField">
+          <input type="text" class="todo-value" placeholder="Add your new todo" />
+          <button class="add-todo"><i class="fa fa-plus"></i></button>
+        </div>
+        <ul class="todoList">
+            <!-- data are comes from local storage -->
+            <li>
+              Todo 1<span class="icon" onclick="removeTodo('${todo.id}')"
+                ><i class="fa fa-trash"></i
+              ></span>
+            </li>
+          </ul>
+          <div class="footer">
+            <span>You have <span class="pendingTasks"></span> pending tasks</span>
+            <button type="button" class="clear-todos">Clear All</button>
+          </div>
+    </div>
     <script src="./dist/todo.js"></script>
 </body>
 </html>
