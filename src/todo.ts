@@ -8,6 +8,7 @@ interface Todo {
   title: string;
   isComplete: boolean;
 }
+const todos: Todo[] = JSON.parse(localStorage.getItem("todos") || "[]");
 
 const handleSubmit = (event: Event) => {
   event.preventDefault();
@@ -19,7 +20,8 @@ const handleSubmit = (event: Event) => {
   };
 
   addTodoToDom(newTodo);
-
+  todos.push(newTodo);
+  saveTodosInLocalStorage();
   todoValue.value = "";
   todoValue.focus();
 };
@@ -36,5 +38,11 @@ const addTodoToDom = (todo: Todo) => {
     `
   );
 };
-
+const saveTodosInLocalStorage = () => {
+  localStorage.setItem("todos", JSON.stringify(todos));
+  return true;
+};
 addTodo.addEventListener("click", (event) => handleSubmit(event));
+window.addEventListener("DOMContentLoaded", () =>
+  todos.forEach((todo) => addTodoToDom(todo))
+);
