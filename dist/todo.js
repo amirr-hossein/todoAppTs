@@ -38,3 +38,8 @@ const removeTodo = (todoID) => {
 };
 addTodo.addEventListener("click", (event) => handleSubmit(event));
 window.addEventListener("DOMContentLoaded", () => todos.forEach((todo) => addTodoToDom(todo)));
+clearTodos.addEventListener("click", () => {
+    todoList.innerHTML = "";
+    todos = [];
+    saveTodosInLocalStorage();
+});
